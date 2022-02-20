@@ -15,7 +15,7 @@ public class SingleNumberOut {
 
 	}
 
-	private static int singleNumber(int[] nums) {
+	private	 static int singleNumber(int[] nums) {
 		return singleNumberMini(nums, 0, new ArrayList<>(1), new ArrayList<>(1));
 	}
 
