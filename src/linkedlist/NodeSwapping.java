@@ -14,19 +14,31 @@ public class NodeSwapping {
 
 	public static void main(String[] args) {
 
-		head = new Node(1);
-		head.next = new Node(2);
-		head.next.next = new Node(3);
-		head.next.next.next = new Node(4);
-		head.next.next.next.next = new Node(5);
-		head.next.next.next.next.next = new Node(6);
-		head.next.next.next.next.next.next = new Node(7);
-		head.next.next.next.next.next.next.next = new Node(8);
-		head.next.next.next.next.next.next.next.next = new Node(9);
+		insertLastRecursive(head,1);
+		insertLastRecursive(head,2);
+		insertLastRecursive(head,3);
+		insertLastRecursive(head,4);
+		insertLastRecursive(head,5);
+		insertLastRecursive(head,6);
+		insertLastRecursive(head,7);
+		insertLastRecursive(head,8);
+		insertLastRecursive(head,9);
 		print();
 		swap(1, 9);
 		print();
 
+	}
+	
+	private static void insertLastRecursive(Node temp, int data) {
+		if (temp == null) {
+			head = new Node(data);
+			return;
+		}
+		if (temp.next == null) {
+			temp.next = new Node(data);
+			return;
+		}
+		insertLastRecursive(temp.next, data);
 	}
 
 	private static void swap(int data1, int data2) {

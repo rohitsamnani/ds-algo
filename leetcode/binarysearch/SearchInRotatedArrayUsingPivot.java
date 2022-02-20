@@ -11,7 +11,7 @@ public class SearchInRotatedArrayUsingPivot {
 	}
 
 	private static int searchUsingPivot(int[] arr, int target) {
-		int pivotIndex = searchPiVot(arr, target);
+		int pivotIndex = searchPiVot(arr);
 		int result=-1;
 		if(arr[pivotIndex]==target)
 			return pivotIndex;
@@ -25,7 +25,7 @@ public class SearchInRotatedArrayUsingPivot {
 		return result;
 	}
 
-	private static int searchPiVot(int[] arr, int target) {
+	private static int searchPiVot(int[] arr) {
 			int start = 0;
 		int end = arr.length - 1;
 

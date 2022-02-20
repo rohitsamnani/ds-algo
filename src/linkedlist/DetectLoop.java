@@ -16,43 +16,41 @@ public class DetectLoop {
 		list.insertLast1(3);
 		list.insertLast1(4);
 		list.insertLast1(5);
+		list.insertLast1(6);
+		list.insertLast1(7);
 		System.out.println(list.head.data);
 
 		/* Create loop for testing */
-		list.head.next.next.next.next.next = list.head.next;
+		list.head.next.next.next.next.next.next.next = list.head.next.next;
 
-		if (detectLoopUsingTwoPointer(list.head))
-			System.out.println("Loop found");
-		else
-			System.out.println("No Loop");
-		
+		System.out.println("very important two pointers loop detect, length & node where they meet: "+detectLoopUsingTwoPointer(list.head).data);
 		if (detectLoop(list.head))
 			System.out.println("Loop found");
 		else
 			System.out.println("No Loop");
-		
-		int loopCount=detectAndCountLoop(list.head);
-		if(loopCount>0)
-			System.out.println("loop found and count nodes in the loop are : "+loopCount);
+
+		int loopCount = detectAndCountLoop(list.head);
+		if (loopCount > 0)
+			System.out.println("loop found and count nodes in the loop are : " + loopCount);
 		else {
 			System.out.println("no loop found");
 		}
 	}
 
 	private static int detectAndCountLoop(Node head) {
-		if(head==null) {
+		if (head == null) {
 			return 0;
 		}
-		HashMap<Node,Integer> hm = new HashMap<>();
-		int count=0;
-		while(head!=null) {
-			if(hm.containsKey(head)) {
-				return count+1-hm.get(head); 
+		HashMap<Node, Integer> hm = new HashMap<>();
+		int count = 0;
+		while (head != null) {
+			if (hm.containsKey(head)) {
+				return count + 1 - hm.get(head);
 			}
-			count+=1;
+			count += 1;
 			hm.put(head, count);
-			
-			head=head.next;
+
+			head = head.next;
 		}
 		return 0;
 	}
@@ -71,25 +69,42 @@ public class DetectLoop {
 		}
 		return false;
 	}
-	
-	
-	private static boolean detectLoopUsingTwoPointer(Node head) {
-		if(head==null) {
-			return false;
+
+	private static Node detectLoopUsingTwoPointer(Node head) {
+		if (head == null) {
+			return null;
 		}
 		Node singleJumper = head;
 		Node doubleJumber = head.next;
-		int count=1;
-		
-		while(doubleJumber!=null && doubleJumber.next!=null) {
-			if(singleJumper==doubleJumber) {
-				System.out.println(count);
-				return true;
+		int length = 0;
+
+		while (doubleJumber != null && doubleJumber.next != null) {
+			if (singleJumper == doubleJumber) {
+				length++;
+				while (singleJumper.next != doubleJumber) {
+					length++;
+					singleJumper = singleJumper.next;
+				}
+				System.out.println(length);
+				break;
 			}
-			count++;
-			doubleJumber=doubleJumber.next.next;
-			singleJumper=singleJumper.next;
+			doubleJumber = doubleJumber.next.next;
+			singleJumper = singleJumper.next;
 		}
-		return false;
+
+		Node f = head;
+		Node s = head;
+		if (length == 0) {
+			return null;
+		}
+		while (length > 0) {
+			s = s.next;
+			length--;
+		}
+		while (f != s) {
+			f = f.next;
+			s = s.next;
+		}
+		return s;
 	}
 }

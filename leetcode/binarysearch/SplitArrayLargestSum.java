@@ -30,9 +30,8 @@ public class SplitArrayLargestSum {
 				if (mid >= sum + arr[i]) {
 					sum += arr[i];
 				} else {
-					i--;
+					sum = arr[i];
 					arrayCount++;
-					sum = 0;
 				}
 			}
 			if (arrayCount <= m) {
@@ -58,10 +57,9 @@ public class SplitArrayLargestSum {
 	}
 
 	private static int largestSingleElementOfArray(int[] arr) {
-		int max = Integer.MIN_VALUE;
+		int max=Integer.MIN_VALUE;
 		for (int e : arr) {
-			if (e > max)
-				max = e;
+			max=Math.max(e,max);
 		}
 		return max;
 

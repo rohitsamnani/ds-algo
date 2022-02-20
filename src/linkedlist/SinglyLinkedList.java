@@ -25,7 +25,7 @@ public class SinglyLinkedList {
 		insertLast1(40);
 		insertFirst(50);
 		insertLast1(60);
-		middile(2, 22);
+		insertAfter(2, 22);
 
 		insertbefore(50, 101);
 		insertbefore(20, 102);
@@ -135,7 +135,7 @@ public class SinglyLinkedList {
 		}
 	}
 
-	public static void middile(int after, int data) {
+	public static void insertAfter(int after, int data) {
 		if (head == null) {
 			return;
 		}
@@ -144,7 +144,7 @@ public class SinglyLinkedList {
 			if (temp.data == after) {
 				Node temp1 = temp.next;
 				temp.next = new Node(data);
-				temp.next.next = temp1;
+				temp.next.next  = temp1;
 				return;
 			}
 			temp = temp.next;

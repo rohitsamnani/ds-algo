@@ -1,7 +1,5 @@
 package linkedlist;
 
-import linkedlist.SinglyLinkedList.Node;
-
 public class SegregationEvenOdd {
 
 	public static class Node {

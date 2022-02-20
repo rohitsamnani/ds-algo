@@ -56,6 +56,7 @@ public class RemoveDup {
 		}
 	}
 
+	//avoid this one as it wont work for dup data
 	private static void removeDuplicates() {
 		if (head == null) {
 			return;
@@ -66,6 +67,8 @@ public class RemoveDup {
 			while (temp1 != null && temp1.data == temp.data) {
 				temp1 = temp1.next;
 			}
+			
+			//becoz list is sorted hence skip the mid extra duplicate part directly.
 			temp.next = temp1;
 			temp = temp.next;
 
