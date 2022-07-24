@@ -11,7 +11,7 @@ public class Interview1 {
 		for(int i=2000;i<=3200;i++) {
 			list.add(i);
 		}
-		list.stream().filter((x)->(x%7==0 && x%5!=0)).forEach((x)->System.out.print(x + ","));
+		list.stream().map(x->Math.sqrt(x)).filter((x)->(x%7==0 && x%5!=0)).forEach(System.out::println);
 	}
 
 }
